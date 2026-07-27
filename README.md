@@ -17,9 +17,20 @@ A documentação Swagger fica em `http://localhost:3000/docs`.
 
 ## Endpoints
 
-- `GET /medications?month=YYYY-MM` - lista completa do mês (default: mês atual)
-- `GET /medications/:ean?month=YYYY-MM` - verifica se um código de barras está no programa
-- `GET /medications/versions` - lista as versões de parser cadastradas
+### GET
+
+| Rota | Descrição |
+|---|---|
+| `GET /medications?month=YYYY-MM` | Lista completa do mês (default: mês atual) |
+| `GET /medications/:ean?month=YYYY-MM` | Verifica se um código de barras está no programa |
+| `GET /medications/versions` | Lista as versões de parser cadastradas |
+
+### POST
+
+| Rota | Body | Descrição |
+|---|---|---|
+| `POST /medications` | `{ "month": "YYYY-MM" }` | Lista completa do mês (campo month opcional) |
+| `POST /medications/check` | `{ "ean": "...", "month": "YYYY-MM" }` | Verifica se um código de barras está no programa (campo month opcional) |
 
 ## Arquitetura (Factory Method)
 
@@ -44,7 +55,7 @@ Trigger (cron/manual)
   MedicationCacheService  (cache em memória por mês)
         │
         ▼
-  MedicationsController  (GET /medications, /medications/:ean)
+  MedicationsController  (GET/POST /medications, /medications/:ean, /medications/check)
 ```
 
 ### Quando o Ministério da Saúde mudar o layout do PDF

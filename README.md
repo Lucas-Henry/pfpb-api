@@ -1,4 +1,13 @@
-# API Farmácia Popular (PFPB) - Códigos de Barras
+<table border="0">
+  <tr>
+    <td>
+      <img width="80" height="80" alt="pfpb-ico" src="https://www.gov.br/saude/pt-br/composicao/sectics/farmacia-popular/imagens-home/icone-farmacia-popular.png/@@images/image" />
+    </td>
+    <td>
+      <h1> API Farmácia Popular</h1>
+    </td>
+  </tr>
+</table>
 
 API NestJS não oficial que consulta o elenco de medicamentos do **Programa Farmácia Popular do Brasil (PFPB)** a partir das listas em PDF publicadas mensalmente pelo Ministério da Saúde.
 

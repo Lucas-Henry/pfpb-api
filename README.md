@@ -26,7 +26,7 @@ npm install
 npm run start:dev
 ```
 
-A documentação Swagger fica em `http://localhost:3000/docs`.
+A documentação Swagger fica em `http://localhost:8252/docs`.
 
 ## Endpoints
 

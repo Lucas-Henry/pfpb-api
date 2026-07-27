@@ -13,11 +13,11 @@ const GOV_BR_BASE_URL =
 export class HttpMedicationSource implements MedicationSource {
   private readonly logger = new Logger(HttpMedicationSource.name);
 
-  constructor(private readonly reference: MonthReference) {}
+  constructor(private readonly reference: MonthReference) { }
 
   buildUrl(): string {
     const monthName = monthNamePtBr(this.reference);
-    return `${GOV_BR_BASE_URL}/${this.reference.year}/lista-de-medicamentos-pfpb-ean-${monthName}-${this.reference.year}.pdf`;
+    return `${GOV_BR_BASE_URL}/${this.reference.year}/lista-de-medicamentos-ean-${monthName}-${this.reference.year}.pdf`;
   }
 
   async fetch(): Promise<Buffer> {
@@ -28,7 +28,7 @@ export class HttpMedicationSource implements MedicationSource {
     if (!response.ok) {
       throw new ServiceUnavailableException(
         `Nao foi possivel baixar a lista PFPB para ${this.reference.key} (status ${response.status}). ` +
-          `Verifique se o PDF para esse mes ja foi publicado em ${url}.`,
+        `Verifique se o PDF para esse mes ja foi publicado em ${url}.`,
       );
     }
 

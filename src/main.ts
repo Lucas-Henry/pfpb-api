@@ -12,8 +12,8 @@ async function bootstrap() {
     .setTitle('API Farmácia Popular (PFPB) - Códigos de Barras')
     .setDescription(
       'API não oficial que consulta o elenco de medicamentos do Programa Farmácia ' +
-        'Popular do Brasil a partir das listas em PDF publicadas pelo Ministério da ' +
-        'Saúde. Projeto open-source, sem vínculo com o governo federal.',
+      'Popular do Brasil a partir das listas em PDF publicadas pelo Ministério da ' +
+      'Saúde. Projeto open-source, sem vínculo com o governo federal.',
     )
     .setVersion('0.1.0')
     .build();
@@ -21,7 +21,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('docs', app, document);
 
-  const port = process.env.PORT ?? 3000;
+  const port = process.env.PORT ?? 8252;
   await app.listen(port);
 }
 

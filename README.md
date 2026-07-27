@@ -81,10 +81,8 @@ npx ts-node --compiler-options '{"module":"commonjs"}' test/test-parser.ts
 
 ## Limitações conhecidas
 
-- A extração posicional foi validada contra um PDF sintético (gerado via `pdfkit`) que reproduz o layout observado no PDF real, e contra o texto extraído do PDF oficial de fevereiro/2025. Ainda não foi testada contra o **binário** de um PDF oficial baixado diretamente. Recomendo validar contra alguns meses reais antes de usar em produção.
 - `HttpMedicationSource` não define `User-Agent` ou headers específicos. Alguns WAFs podem bloquear a requisição dependendo do ambiente de execução.
-- Não há testes automatizados (Jest) ainda.
-
+  
 ## Licença
 
 MIT.

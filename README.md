@@ -11,7 +11,11 @@
 
 API NestJS não oficial que consulta o elenco de medicamentos do **Programa Farmácia Popular do Brasil (PFPB)** a partir das listas em PDF publicadas mensalmente pelo Ministério da Saúde.
 
-Não existe API pública do governo para essa consulta. A única fonte disponível é o PDF mensal publicado em `gov.br/saude/.../codigos-de-barras/{ano}/lista-de-medicamentos-pfpb-ean-{mes}-{ano}.pdf`. Este projeto baixa esse PDF, extrai a tabela (produto, indicação, código de barras) e expõe esses dados como uma API REST documentada via Swagger.
+Não existe API pública do governo para essa consulta. A única fonte disponível é o PDF mensal publicado em:
+
+`gov.br/saude/.../codigos-de-barras/{ano}/lista-de-medicamentos-ean-{mes}-{ano}.pdf`. 
+
+Este projeto baixa esse PDF, extrai a tabela (produto, indicação, código de barras) e expõe esses dados como uma API REST documentada via Swagger.
 
 Projeto open source sem vínculo com o Ministério da Saúde ou qualquer órgão do governo federal.
 

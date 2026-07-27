@@ -1,8 +1,10 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
-import { ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { MedicationsService } from './medications.service';
 import { MedicationDto } from './dto/medication.dto';
 import { ListMedicationsQueryDto } from './dto/list-medications.query.dto';
+import { ListMedicationsBodyDto } from './dto/list-medications.body.dto';
+import { CheckEanBodyDto } from './dto/check-ean.body.dto';
 import { CheckEanResponseDto } from './dto/check-ean.response.dto';
 import { currentMonthKey } from '../common/month-reference.util';
 
@@ -48,5 +50,27 @@ export class MedicationsController {
   ): Promise<CheckEanResponseDto> {
     const month = query.month ?? currentMonthKey();
     return this.medicationsService.checkEan(ean, month);
+  }
+
+  @Post()
+  @ApiOperation({
+    summary: 'Lista os medicamentos do Programa Farmácia Popular (via POST)',
+  })
+  @ApiBody({ type: ListMedicationsBodyDto })
+  @ApiResponse({ status: 200, type: [MedicationDto] })
+  async listPost(@Body() body: ListMedicationsBodyDto): Promise<MedicationDto[]> {
+    const month = body.month ?? currentMonthKey();
+    return this.medicationsService.getMedicationList(month);
+  }
+
+  @Post('check')
+  @ApiOperation({
+    summary: 'Verifica se um código de barras (EAN) está no Programa Farmácia Popular (via POST)',
+  })
+  @ApiBody({ type: CheckEanBodyDto })
+  @ApiResponse({ status: 200, type: CheckEanResponseDto })
+  async checkEanPost(@Body() body: CheckEanBodyDto): Promise<CheckEanResponseDto> {
+    const month = body.month ?? currentMonthKey();
+    return this.medicationsService.checkEan(body.ean, month);
   }
 }
